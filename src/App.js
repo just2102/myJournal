@@ -15,8 +15,7 @@ const App = (props) => {
           path="/articles" 
           element={<Articles 
             state={props.state.articlesPage}
-            addArticle={props.addArticle}
-            updateNewArticleText={props.updateNewArticleText}
+            dispatch={props.dispatch}
           />} ></Route>
 
           <Route path="/about" element={<About/>}></Route>

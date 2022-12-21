@@ -1,6 +1,8 @@
 import React from "react"
+import { addArticleActionCreator, updateNewArticleTextActionCreator } from "../../Redux/store"
 import Article from "./Article/Article"
 import styles from "./Articles.css"
+
 
 const Articles = (props) => {
     let articlesData = props.state.articlesData
@@ -12,12 +14,12 @@ const Articles = (props) => {
     let newArticleElement = React.createRef()
 
     function addArticle() {
-        props.addArticle()
+        props.dispatch(addArticleActionCreator())
     }
     function onTextChange() {
-        let text = newArticleElement.current.value
+        let newText = newArticleElement.current.value
 
-        props.updateNewArticleText(text);
+        props.dispatch(updateNewArticleTextActionCreator(newText))
     }
     return ( 
         <div className="article_container">

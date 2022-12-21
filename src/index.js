@@ -12,9 +12,8 @@ root.render(
   <BrowserRouter>
   <React.StrictMode>
     <App 
-    state={store.getState()} 
-    addArticle={store.addArticle.bind(store)}
-    updateNewArticleText={store.updateNewArticleText.bind(store)}
+    state={store.getState()}
+    dispatch={store.dispatch.bind(store)}
     />
   </React.StrictMode>
   </BrowserRouter>
