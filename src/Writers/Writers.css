@@ -1,0 +1,31 @@
+.writers {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    color:rgb(219, 226, 232);
+    padding:1rem;
+}
+
+
+
+
+/* writer */
+.writer {
+    display:flex;
+    justify-content: center;
+    gap:10px;
+    transition: 200ms;
+}
+.writer:hover {
+    cursor: pointer;
+    transform: scale(1.03);
+}
+
+.writer_avatar img {
+    width:100px;
+    height:100px;
+}
+
+.writer_username {
+    
+}

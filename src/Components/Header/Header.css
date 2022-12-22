@@ -6,3 +6,18 @@ header {
     background-color: rgb(166, 61, 64);
     color: white;
 }
+
+header > div > a {
+    font-style: italic;
+}
+header > div > a.active {
+    font-weight: bolder;
+}
+
+header a {
+    text-decoration: none;
+    color:black;
+}
+header a:visited {
+    text-decoration: none;
+}

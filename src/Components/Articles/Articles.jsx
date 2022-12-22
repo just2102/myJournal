@@ -1,32 +1,21 @@
 import React from "react"
-import { addArticleActionCreator, updateNewArticleTextActionCreator } from "../../Redux/store"
+
 import Article from "./Article/Article"
+import UserSection from "./UserSection/UserSection"
 import styles from "./Articles.css"
 
 
 const Articles = (props) => {
     let articlesData = props.state.articlesData
     let mappedArticles = articlesData.map((article) => {
-        return <Article header={article.header} body={article.body} date={article.date} />
+        return <Article header={article.header} body={article.body} date={article.date} likeCount={article.likeCount}/>
     })
 
-
-    let newArticleElement = React.createRef()
-
-    function addArticle() {
-        props.dispatch(addArticleActionCreator())
-    }
-    function onTextChange() {
-        let newText = newArticleElement.current.value
-
-        props.dispatch(updateNewArticleTextActionCreator(newText))
-    }
-    return ( 
-        <div className="article_container">
-            {mappedArticles}
-            <div className="post_article_section">
-                <textarea name="newArticle" id="newArticle" ref={newArticleElement} onChange={onTextChange} value={props.state.newArticleText}></textarea>
-                <button className="post_article_button" onClick={addArticle}>Post</button>
+    return (
+        <div className="user_articles">
+            <UserSection dispatch={props.dispatch} state={props.state}/>
+            <div className="article_container">
+                {mappedArticles}
             </div>
         </div>
      );

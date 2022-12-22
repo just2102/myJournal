@@ -7,10 +7,13 @@ const Header = () => {
             <div className="logo">
                 Logo
             </div>
-            <div className="articles">
+            <div className="articles_link">
                 <NavLink to="/articles">Articles</NavLink>
                 </div>
-            <div className="about">
+            <div className="writers_link">
+                <NavLink to="/writers">Writers</NavLink>
+            </div>
+            <div className="about_link">
                 <NavLink to="/about">About</NavLink>
                 </div>
         </header>
