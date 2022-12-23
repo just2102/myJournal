@@ -7,10 +7,20 @@ export const updateNewArticleTextActionCreator = (newText) =>
 export const updateNewArticleHeaderActionCreator = (newHeader) =>
 ({type: UPDATE_NEW_ARTICLE_HEADER, newHeader: newHeader})
 
-function articlesReducer (state, action) {
+let initialState = {
+    articlesData:
+        [
+            {id:1,header:'First article...',body:'Some text in the body of this article...', date:'Today', likeCount: 0},
+            {id:2,header:'Second article!',body:'Some random text idk?', date:'Today', likeCount: 0}
+    ],
+    newArticleHeader: '',
+    newArticleText:''
+}
+
+function articlesReducer (state = initialState, action) {
     switch (action.type) {
         case ADD_ARTICLE:
-            if (state.newArticleText!=="" || state.newArticleHeader!=="") {
+            if (state.newArticleText!=="" && state.newArticleHeader!=="") {
                 let newArticle = 
                 {
                     id:state.articlesData[state.articlesData.length-1].id + 1,

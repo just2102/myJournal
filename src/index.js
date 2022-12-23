@@ -3,11 +3,11 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
-import store from './Redux/store';
+import store from './Redux/redux-store';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-function renderTree(state) {
+function renderTree() {
 root.render(
   <BrowserRouter>
   <React.StrictMode>
@@ -19,6 +19,6 @@ root.render(
   </BrowserRouter>
 );
 }
-renderTree(store.getState);
+renderTree();
 
 store.subscribe(renderTree)
