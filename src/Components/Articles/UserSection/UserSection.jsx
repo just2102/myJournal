@@ -1,34 +1,31 @@
-import { addArticleActionCreator, updateNewArticleHeaderActionCreator, updateNewArticleTextActionCreator } 
-from "../../../Redux/articlesReducer"
-
 const UserSection = (props) => {
     function addArticle() {
-        props.dispatch(addArticleActionCreator())
+        props.addArticle()
     }
-    function onTextChange(e) {
-        let newText = e.target.value
-        props.dispatch(updateNewArticleTextActionCreator(newText))
+    function onBodyChange(e) {
+        let newBody = e.target.value
+        props.onNewArticleBodyChange(newBody)
     }
     function onHeaderChange(e) {
         let newHeader = e.target.value;
-        props.dispatch(updateNewArticleHeaderActionCreator(newHeader))
+        props.onNewArticleHeaderChange(newHeader)
     }
 
     return ( 
         <div className="user_section">
-            <div className="user_avatar">User avatar...</div>
-            <div className="user_username">Username</div>
+            <div className="user_avatar"><img src={props.currentUser.avatar} alt="" /></div>
+            <div className="user_username">{props.currentUser.username}</div>
             <div className="post_article_section">
                 <label htmlFor="newArticle_header">Your new article is called</label>
                 <input type="text" id="newArticle_header" 
                 placeholder="..." 
-                value={props.state.newArticleHeader} 
+                value={props.newArticleHeader} 
                 onChange={onHeaderChange}/>
                 
                 <textarea name="newArticle" id="newArticle_body" 
-                onChange={onTextChange} 
+                onChange={onBodyChange} 
                 placeholder="In the beginning there was word..."
-                value={props.state.newArticleText}
+                value={props.newArticleBody}
                 
                 >
                 </textarea>

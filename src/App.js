@@ -1,9 +1,9 @@
 import { Routes, Route } from "react-router-dom";
 
 import Header from "./Components/Header/Header";
-import Articles from "./Components/Articles/Articles";
 import Writers from "./Writers/Writers";
 import About from "./Components/About/About"
+import ArticlesContainer from "./Components/Articles/ArticlesContainer";
 
 const App = (props) => {
 
@@ -14,9 +14,7 @@ const App = (props) => {
         <Routes>
           <Route 
           path="/articles" 
-          element={<Articles 
-          state={props.state.articlesPage}
-          dispatch={props.dispatch}
+          element={<ArticlesContainer 
           />} 
           ></Route>
           <Route path='/writers' 
