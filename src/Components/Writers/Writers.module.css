@@ -4,6 +4,7 @@
     justify-content: center;
     color:rgb(219, 226, 232);
     padding:1rem;
+    gap:1rem;
 }
 
 
@@ -12,7 +13,9 @@
 /* writer */
 .writer {
     display:flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
     gap:10px;
     transition: 200ms;
 }
@@ -27,5 +30,22 @@
 }
 
 .writer_username {
-    
+    font-style: italic;
+}
+
+
+button:hover {
+    cursor: pointer;
+}
+.follow_button, .unfollow_button {
+    border-radius: 10px;
+    padding:8px;
+}
+
+.follow_button {
+    background-color:rgb(228, 43, 33);
+}
+
+.unfollow_button {
+    background-color:green;
 }

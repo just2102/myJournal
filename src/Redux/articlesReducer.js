@@ -46,7 +46,6 @@ function articlesReducer (state = initialState, action) {
             stateCopy.newArticleHeader=action.newHeader
             return stateCopy;
         default:
-            console.log('action.type passed into articlesReducer is not defined; check your action creator!')
             return state;
     }
 }
