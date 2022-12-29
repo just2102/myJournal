@@ -8,7 +8,24 @@
 }
 
 
-
+/* pages */
+.pages {
+    display:flex;
+    justify-content: center;
+    gap:2rem;
+    color:rgb(245, 245, 245);
+}
+.active_page {
+    font-weight: bold;
+}
+.inactive_page {
+    font-style: italic;
+    font-weight: lighter;
+    color:rgb(245, 245, 245,0.6);
+}
+span:hover {
+    cursor: pointer;
+}
 
 /* writer */
 .writer {

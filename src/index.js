@@ -13,10 +13,7 @@ root.render(
   <Provider store={store}>
   <BrowserRouter>
   <React.StrictMode>
-    <App 
-    state={store.getState()}
-    dispatch={store.dispatch.bind(store)}
-    />
+    <App />
   </React.StrictMode>
   </BrowserRouter>
   </Provider>
