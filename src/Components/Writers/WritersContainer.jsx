@@ -10,7 +10,6 @@ import {
   setWritersOnPage
 } from "../../Redux/writersReducer";
 import React, { Component } from 'react'
-import axios from "axios";
 import writers from "../../Redux/writers.json"
 
 
@@ -19,7 +18,7 @@ class WritersAPIComponent extends Component {
     componentDidMount() {
 // imitates real API get request (because in a real API request we would specify the number of writers on page that we want based on pre-coded value in state)
         this.props.setWritersOnPage(2)
-        this.props.setWriters(writers.slice(0,this.props.writersOnPage))
+        this.props.setWriters(writers)
         this.props.setTotalWriters(writers.length)
     }
     onPageClick = (page) => {
