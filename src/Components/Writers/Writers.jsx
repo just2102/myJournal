@@ -3,7 +3,7 @@ import styles from "./Writers.module.css"
 import writerAvatar from '../../img/just2102_avatar.png'
 
 const Writers = (props) => {
-    let writers = props.writersData
+    let writers = props.writers
     let numberOfPages = Math.ceil(props.totalWriters / props.writersOnPage)
     let pages = []
     for (let i = 1 ; i<=numberOfPages; i++) {

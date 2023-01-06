@@ -7,7 +7,7 @@ import styles from "./Articles.css"
 
 const Articles = (props) => {
 
-    let articles = props.articlesData
+    let articles = props.articles
 
     let mappedArticles = articles.map((article) => {
         return <Article header={article.header} body={article.body} date={article.date} likeCount={article.likeCount}/>

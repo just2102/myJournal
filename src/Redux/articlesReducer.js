@@ -1,8 +1,10 @@
 import just2102_avatar from "../img/just2102_avatar.png"
 
-const ADD_ARTICLE = "ADD-ARTICLE"
-const UPDATE_NEW_ARTICLE_HEADER = "UPDATE-NEW-ARTICLE-HEADER"
-const UPDATE_NEW_ARTICLE_BODY = "UPDATE-NEW-ARTICLE-BODY"
+const ADD_ARTICLE = "ADD_ARTICLE"
+const UPDATE_NEW_ARTICLE_HEADER = "UPDATE_NEW_ARTICLE_HEADER"
+const UPDATE_NEW_ARTICLE_BODY = "UPDATE_NEW-ARTICLE_BODY"
+const GET_WRITER_ARTICLES = "GET_WRITER_ARTICLES"
+
 export const addArticleActionCreator = () => ({type:ADD_ARTICLE})
 export const updateNewArticleBodyActionCreator = (newBody) => 
 ({type: UPDATE_NEW_ARTICLE_BODY, newBody: newBody})
@@ -10,11 +12,7 @@ export const updateNewArticleHeaderActionCreator = (newHeader) =>
 ({type: UPDATE_NEW_ARTICLE_HEADER, newHeader: newHeader})
 
 let initialState = {
-    articlesData:
-        [
-            {id:1,header:'First article...',body:'Some text in the body of this article...', date:'Today', likeCount: 0},
-            {id:2,header:'Second article!',body:'Some random text idk?', date:'Today', likeCount: 0}
-    ],
+    articles:[],
     newArticleHeader: '',
     newArticleBody:'',
     currentUser: {id:1,username:'just2102',avatar: just2102_avatar}
@@ -45,6 +43,11 @@ function articlesReducer (state = initialState, action) {
         case UPDATE_NEW_ARTICLE_HEADER:
             stateCopy.newArticleHeader=action.newHeader
             return stateCopy;
+        case GET_WRITER_ARTICLES:
+            return {
+                ...state,
+                articlesData: action.articles
+            }
         default:
             return state;
     }

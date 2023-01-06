@@ -1,0 +1,46 @@
+{
+  "writers": [
+    {
+      "id": "1",
+      "username": "just2102",
+      "avatar": null,
+      "followed": true
+    },
+    {
+      "id": "2",
+      "username": "Writer 2",
+      "avatar": null,
+      "followed": false
+    },
+    {
+      "id": "3",
+      "username": "Writer 3",
+      "avatar": null,
+      "followed": true
+    },
+    {
+      "id": "4",
+      "username": "Writer 4",
+      "avatar": null,
+      "followed": false
+    }
+  ],
+  "articles": [
+    {
+      "id": 1,
+      "header": "First article... written by just2102",
+      "body": "Some text in the body of this article...",
+      "date": "Today",
+      "likeCount": 0,
+      "authorId": 1
+    },
+    {
+      "id": 2,
+      "header": "Second article! written by some writer 2",
+      "body": "Some random text idk?",
+      "date": "Today",
+      "likeCount": 0,
+      "authorId": 2
+    }
+  ]
+}
