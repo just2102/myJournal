@@ -1,28 +1,24 @@
 {
   "writers": [
     {
-      "id": "1",
       "username": "just2102",
-      "avatar": null,
-      "followed": true
+      "followed": true,
+      "id": "1"
     },
     {
-      "id": "2",
-      "username": "Writer 2",
-      "avatar": null,
-      "followed": false
+      "username": "writer2",
+      "followed": true,
+      "id": "2"
     },
     {
-      "id": "3",
-      "username": "Writer 3",
-      "avatar": null,
-      "followed": true
+      "username": "writer3",
+      "followed": true,
+      "id": "3"
     },
     {
-      "id": "4",
-      "username": "Writer 4",
-      "avatar": null,
-      "followed": false
+      "username": "writer4",
+      "followed": false,
+      "id": "4"
     }
   ],
   "articles": [

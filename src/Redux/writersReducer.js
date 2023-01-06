@@ -7,6 +7,7 @@ const UNFOLLOW = "UNFOLLOW";
 const SET_TOTAL_WRITERS = "SET_TOTAL_WRITERS";
 const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
 const TOGGLE_IS_FETCHING = "TOGGLE_IS_FETCHING";
+const TOGGLE_FOLLOWING_IN_PROGRESS = "TOGGLE_FOLLOWING_IN_PROGRESS"
 
 let initialState = {
   writers: [
@@ -18,36 +19,60 @@ let initialState = {
   totalWriters: 0,
   currentPage: 1,
   isFetching: false,
+  followingInProgress: null
 };
 
-const setWriters = (writers) => ({ type: SET_WRITERS, writers });
-export const follow = (writerId) => ({ type: FOLLOW, writerId });
-export const unfollow = (writerId) => ({ type: UNFOLLOW, writerId });
-const setTotalWriters = (number) => ({
-  type: SET_TOTAL_WRITERS,
-  number,
-});
-export const setCurrentPage = (page) => ({ type: SET_CURRENT_PAGE, page });
-
-const toggleIsFetching = (isFetching) => ({
-  type: TOGGLE_IS_FETCHING,
-  isFetching,
-});
+const setWriters = (writers)            => ({ type: SET_WRITERS, writers });
+const followSuccess = (writerId)        => ({ type: FOLLOW, writerId });
+const unfollowSuccess = (writerId)      => ({ type: UNFOLLOW, writerId });
+export const setCurrentPage = (page)    => ({ type: SET_CURRENT_PAGE, page });
+const setTotalWriters = (number)        => ({type: SET_TOTAL_WRITERS,number,});
+const toggleFollowingInProgress = (writerId)=> ({type:TOGGLE_FOLLOWING_IN_PROGRESS, writerId})
+const toggleIsFetching = (isFetching)       => ({type: TOGGLE_IS_FETCHING, isFetching});
 
 export function getWriters(writersOnPage, currentPage) {
   return function (dispatch) {
     dispatch(toggleIsFetching(true));
 
-    writersAPI.getTotalWriters().then((number) => {
-        dispatch(setTotalWriters(number));
-      })
-    .then(
-        writersAPI.getWriters(writersOnPage, currentPage).then((data) => {
-          dispatch(setWriters(data));
-          dispatch(toggleIsFetching(false));
-        })
-      );
+    setTimeout(()=> {
+        writersAPI.getTotalWriters().then((number) => {
+            dispatch(setTotalWriters(number));
+          })
+        .then(
+            writersAPI.getWriters(writersOnPage, currentPage).then((data) => {
+              dispatch(setWriters(data));
+              dispatch(toggleIsFetching(false));
+            })
+          );
+    }, 800)
   };
+}
+export function follow(writerId) {
+    return function (dispatch) {
+        dispatch(toggleFollowingInProgress(writerId))
+
+
+        writersAPI.follow(writerId).then(response=> {
+            if (response.status===200) {
+                dispatch(followSuccess(writerId))
+            } setTimeout(() => {
+              dispatch(toggleFollowingInProgress(null))
+            }, 400);
+        })
+    }
+}
+export function unfollow(writerId) {
+    return function (dispatch) {
+        dispatch(toggleFollowingInProgress(writerId));
+
+        writersAPI.unfollow(writerId).then(response=> {
+            if (response.status===200) {
+                dispatch(unfollowSuccess(writerId))
+            } setTimeout(() => {
+              dispatch(toggleFollowingInProgress(null))
+            }, 400);
+        })
+    }
 }
 
 function writersReducer(state = initialState, action) {
@@ -96,6 +121,11 @@ function writersReducer(state = initialState, action) {
         ...state,
         isFetching: action.isFetching,
       };
+    case TOGGLE_FOLLOWING_IN_PROGRESS:
+        return {
+            ...state,
+            followingInProgress: action.writerId
+        }
     default:
       return state;
   }

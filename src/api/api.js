@@ -19,6 +19,12 @@ export const writersAPI = {
         return response.data;
       });
   },
+  follow (writerId) {
+    return instance.patch(`writers/${writerId}`, {followed: true})
+  },
+  unfollow (writerId) {
+    return instance.patch(`writers/${writerId}`, {followed: false})
+  }
 };
 
 export const articlesAPI = {
