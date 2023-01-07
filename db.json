@@ -1,26 +1,26 @@
 {
   "writers": [
     {
-      "username": "just2102",
+      "name": "Eli K.",
       "followed": true,
       "id": 1,
       "avatar": "https://sun9-13.userapi.com/impg/CX8p76Rc7rjdg44HiWTcF5zZJP5u5wkDjdLLvg/rHOR50fJyUI.jpg?size=256x256&quality=96&sign=33770d1e7fcdc2899dbc4afadac06eaa&type=album"
     },
     {
-      "username": "writer2",
+      "name": "John F.",
       "followed": false,
       "id": 2,
       "avatar": "https://sun9-13.userapi.com/impg/CX8p76Rc7rjdg44HiWTcF5zZJP5u5wkDjdLLvg/rHOR50fJyUI.jpg?size=256x256&quality=96&sign=33770d1e7fcdc2899dbc4afadac06eaa&type=album"
     },
     {
-      "username": "writer3",
+      "name": "Alex J.",
       "followed": true,
       "id": 3,
       "avatar": "https://sun9-13.userapi.com/impg/CX8p76Rc7rjdg44HiWTcF5zZJP5u5wkDjdLLvg/rHOR50fJyUI.jpg?size=256x256&quality=96&sign=33770d1e7fcdc2899dbc4afadac06eaa&type=album"
     },
     {
-      "username": "writer4",
-      "followed": false,
+      "name": "Michael S.",
+      "followed": true,
       "id": 4,
       "avatar": "https://sun9-13.userapi.com/impg/CX8p76Rc7rjdg44HiWTcF5zZJP5u5wkDjdLLvg/rHOR50fJyUI.jpg?size=256x256&quality=96&sign=33770d1e7fcdc2899dbc4afadac06eaa&type=album"
     }
@@ -49,6 +49,36 @@
       "date": "Today",
       "likeCount": 0,
       "authorId": 1
+    }
+  ],
+  "users": [
+    {
+      "username": "just2102",
+      "email": "just2102@myjournal.com",
+      "password": "bestPassw0rd",
+      "followed": true,
+      "id": 1
+    },
+    {
+      "username": "writer2@myjournal.com",
+      "email": "KendoLover1998@myjournal.com",
+      "password": "seomPassWordWriter2",
+      "followed": false,
+      "id": 2
+    },
+    {
+      "username": "KendoLover1998",
+      "email": "KendoLover1998@myjournal.com",
+      "password": "seomPassWorsd3",
+      "followed": true,
+      "id": 3
+    },
+    {
+      "username": "KyudoEnjoyer2007",
+      "email": "KyudoEnjoyer2007@myjournal.com",
+      "password": "sePasdWriterasd4",
+      "followed": true,
+      "id": 4
     }
   ]
 }

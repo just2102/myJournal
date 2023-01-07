@@ -1,7 +1,8 @@
 import { NavLink } from "react-router-dom";
 import styles from "./Header.css"
 
-const Header = () => {
+const Header = (props) => {
+
     return ( 
         <header>
             <div className="logo">
@@ -16,6 +17,9 @@ const Header = () => {
             <div className="about_link">
                 <NavLink to="/about">About</NavLink>
                 </div>
+            <div className="login_link">
+                <NavLink to="/login">Login</NavLink>
+            </div>
         </header>
      );
 }

@@ -32,7 +32,7 @@ const Writers = (props) => {
           />
         </div>
         </NavLink>
-        <div className={styles.writer_username}>{writer.username}</div>
+        <div className={styles.writer_username}>{writer.name}</div>
         {writer.followed === true ? (
           <button
             className={styles.unfollow_button}

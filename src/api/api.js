@@ -35,3 +35,21 @@ export const articlesAPI = {
     return instance.get(`articles?authorId=${authorId}`);
   },
 };
+
+
+export const authAPI = {
+  login(username, password) {
+    return instance.get(`users`).then(response=>{
+        for (let i = 0; i<response.data.length; i++) {
+          if (response.data[i].username===username && response.data[i].password===password) {
+            return response.data[i]
+          } else {
+            return 404
+          }
+        }
+    })
+  },
+  whoAmI() {
+    return 
+  }
+}

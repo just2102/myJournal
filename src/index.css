@@ -20,3 +20,27 @@ code {
   justify-content: center;
   align-items: center;
 }
+
+.login_wrapper {
+  margin-top:15%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.login_wrapper form {
+  font-size: larger;
+  color:aliceblue;
+  display:grid;
+  gap:10px;
+  justify-items: center;
+  grid-template-rows: repeat(4,1fr);
+}
+.login_wrapper form button {
+  background-color: rgb(188, 45, 45);
+  transition: 200ms;
+}
+.login_wrapper form button:hover {
+  background-color: rgb(186, 75, 75);
+  transform: scale(1.1);
+  cursor: pointer;
+}
