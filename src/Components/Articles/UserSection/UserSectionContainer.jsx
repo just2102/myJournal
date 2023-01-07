@@ -1,13 +1,16 @@
 import { connect } from "react-redux"
-import { addArticleActionCreator, updateNewArticleBodyActionCreator, updateNewArticleHeaderActionCreator, updateNewArticleTextActionCreator } 
+import { addArticleActionCreator, updateNewArticleBodyActionCreator, updateNewArticleHeaderActionCreator, } 
 from "../../../Redux/articlesReducer"
 import UserSection from "./UserSection"
 
 function mapStateToProps (state) {
     return {
-        currentUser: state.articlesPage.currentUser,
+        writer: state.articlesPage.writer,
         newArticleHeader: state.articlesPage.newArticleHeader,
-        newArticleBody: state.articlesPage.newArticleBody
+        newArticleBody: state.articlesPage.newArticleBody,
+
+        isAuthorized: state.auth.isAuthorized,
+        currentWriter: state.auth.currentWriter
     }
 }
 function mapDispatchToProps (dispatch) {

@@ -15,7 +15,7 @@ const Articles = (props) => {
 
     return (
         <div className="user_articles">
-            <UserSectionContainer/> 
+            {props.isAuthorized && <UserSectionContainer/>} 
             <div className="article_container">
                 {mappedArticles}
             </div>

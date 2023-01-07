@@ -28,7 +28,10 @@ export const writersAPI = {
 };
 
 export const articlesAPI = {
-  getWriterArticles() {
-    return instance.get("articles/");
+  getWriter (writerId) {
+    return instance.get(`writers/${writerId}`)
+  },
+  getWriterArticles(authorId) {
+    return instance.get(`articles?authorId=${authorId}`);
   },
 };

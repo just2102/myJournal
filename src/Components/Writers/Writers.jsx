@@ -1,6 +1,7 @@
 import styles from "./Writers.module.css";
 //import Writer from "./Writer/Writer"
 import writerAvatar from "../../img/just2102_avatar.png";
+import { NavLink } from "react-router-dom";
 
 const Writers = (props) => {
 //   let numberOfPages = Math.ceil(props.totalWriters / props.writersOnPage);
@@ -23,13 +24,14 @@ const Writers = (props) => {
   let writersMapped = props.writers.map((writer) => {
     return (
       <div className={styles.writer}>
+        <NavLink to={`/articles/${writer.id}`}>
         <div className={styles.writer_avatar}>
           <img
-            src={writerAvatar}
-            // {writer.avatar}
+            src={writer.avatar}
             alt=""
           />
         </div>
+        </NavLink>
         <div className={styles.writer_username}>{writer.username}</div>
         {writer.followed === true ? (
           <button

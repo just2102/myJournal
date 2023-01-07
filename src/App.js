@@ -11,8 +11,10 @@ const App = (props) => {
       <Header></Header>
       <div className="content_wrapper">
         <Routes>
-          <Route path="/articles" element={<ArticlesContainer />}></Route>
-          <Route path="/writers" element={<WritersContainer />} />
+          <Route path="/articles/">
+            <Route path=":writerId" element={<ArticlesContainer/>}/>
+          </Route>
+          <Route path="/writers/" element={<WritersContainer />} />
 
           <Route path="/about" element={<About />}></Route>
         </Routes>

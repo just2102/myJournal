@@ -3,22 +3,26 @@
     {
       "username": "just2102",
       "followed": true,
-      "id": "1"
+      "id": 1,
+      "avatar": "https://sun9-13.userapi.com/impg/CX8p76Rc7rjdg44HiWTcF5zZJP5u5wkDjdLLvg/rHOR50fJyUI.jpg?size=256x256&quality=96&sign=33770d1e7fcdc2899dbc4afadac06eaa&type=album"
     },
     {
       "username": "writer2",
-      "followed": true,
-      "id": "2"
+      "followed": false,
+      "id": 2,
+      "avatar": "https://sun9-13.userapi.com/impg/CX8p76Rc7rjdg44HiWTcF5zZJP5u5wkDjdLLvg/rHOR50fJyUI.jpg?size=256x256&quality=96&sign=33770d1e7fcdc2899dbc4afadac06eaa&type=album"
     },
     {
       "username": "writer3",
       "followed": true,
-      "id": "3"
+      "id": 3,
+      "avatar": "https://sun9-13.userapi.com/impg/CX8p76Rc7rjdg44HiWTcF5zZJP5u5wkDjdLLvg/rHOR50fJyUI.jpg?size=256x256&quality=96&sign=33770d1e7fcdc2899dbc4afadac06eaa&type=album"
     },
     {
       "username": "writer4",
       "followed": false,
-      "id": "4"
+      "id": 4,
+      "avatar": "https://sun9-13.userapi.com/impg/CX8p76Rc7rjdg44HiWTcF5zZJP5u5wkDjdLLvg/rHOR50fJyUI.jpg?size=256x256&quality=96&sign=33770d1e7fcdc2899dbc4afadac06eaa&type=album"
     }
   ],
   "articles": [
@@ -37,6 +41,14 @@
       "date": "Today",
       "likeCount": 0,
       "authorId": 2
+    },
+    {
+      "id": 3,
+      "header": "Third article... written by just2102",
+      "body": "asd;'askd;laksjdk;l..",
+      "date": "Today",
+      "likeCount": 0,
+      "authorId": 1
     }
   ]
 }
