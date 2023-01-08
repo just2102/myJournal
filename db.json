@@ -23,6 +23,12 @@
       "followed": true,
       "id": 4,
       "avatar": "https://sun9-13.userapi.com/impg/CX8p76Rc7rjdg44HiWTcF5zZJP5u5wkDjdLLvg/rHOR50fJyUI.jpg?size=256x256&quality=96&sign=33770d1e7fcdc2899dbc4afadac06eaa&type=album"
+    },
+    {
+      "name": "Test",
+      "followed": false,
+      "id": 5,
+      "avatar": "https://icon-library.com/images/robot-flat-icon/robot-flat-icon-29.jpg"
     }
   ],
   "articles": [
@@ -79,6 +85,20 @@
       "password": "sePasdWriterasd4",
       "followed": true,
       "id": 4
+    },
+    {
+      "email": "test@myjournal.com",
+      "password": "$2a$10$YPB0Ml9OG6IJSJBIJblb7e50zUDbmFexzcL7sEf43BgXwadoJzJ1e",
+      "username": "test",
+      "followed": false,
+      "id": 5
+    }
+  ],
+  "tokens": [
+    {
+      "email": "test@myjournal.com",
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RAbXlqb3VybmFsLmNvbSIsImlhdCI6MTY3MzE3MTE5OCwiZXhwIjoxNjczMTc0Nzk4LCJzdWIiOiI1In0.V4bwMHG2HaHI1qKGw_SMRjygfBO617u4OwvwRv_BeRI",
+      "id": 5
     }
   ]
 }

@@ -10,6 +10,7 @@ import {
   setCurrentPage,
 } from "../../Redux/writersReducer";
 import React, { useEffect } from "react";
+import withAuthRedirect from "../hoc/withAuthRedirect";
 const WritersAPIComponent = (props) => {
   useEffect(()=> {
     if (props.writers.length===0) {
@@ -49,6 +50,9 @@ const WritersAPIComponent = (props) => {
     );
 }
 
+let AuthRedirectComponent = withAuthRedirect(WritersAPIComponent)
+
+
 function mapStateToProps(state) {
   return {
     writers: state.writersPage.writers,
@@ -57,7 +61,9 @@ function mapStateToProps(state) {
     currentPage: state.writersPage.currentPage,
 
     isFetching: state.writersPage.isFetching,
-    followingInProgress: state.writersPage.followingInProgress
+    followingInProgress: state.writersPage.followingInProgress,
+
+    isAuthorized: state.auth.isAuthorized
   };
 }
 
@@ -67,6 +73,6 @@ const WritersContainer = connect(mapStateToProps, {
   unfollow,
 
   setCurrentPage,
-})(WritersAPIComponent);
+})(AuthRedirectComponent);
 
 export default WritersContainer;

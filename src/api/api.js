@@ -19,31 +19,64 @@ export const writersAPI = {
         return response.data;
       });
   },
-  follow (writerId) {
-    return instance.patch(`writers/${writerId}`, {followed: true})
+  follow(writerId) {
+    return instance.patch(`writers/${writerId}`, { followed: true });
   },
-  unfollow (writerId) {
-    return instance.patch(`writers/${writerId}`, {followed: false})
-  }
+  unfollow(writerId) {
+    return instance.patch(`writers/${writerId}`, { followed: false });
+  },
 };
 
 export const articlesAPI = {
-  getWriter (writerId) {
-    return instance.get(`writers/${writerId}`)
+  getWriter(writerId) {
+    return instance.get(`writers/${writerId}`);
   },
   getWriterArticles(authorId) {
     return instance.get(`articles?authorId=${authorId}`);
   },
 };
 
-
 export const authAPI = {
-  login(username, password) {
-    return instance.get(`users`).then(response=>{
-        return response.data.find(user=> user.username===username && user.password===password)
+  register(username, email, password) {
+    let data = {
+      username,
+      email,
+      password,
+      followed: false,
+    };
+    return instance
+      .post(`register`, data)
+      .then((response) => {
+        return response;
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  },
+  login(email, password) {
+    let data = {
+      email,
+      password,
+    };
+    return instance
+      .post(`login`, data)
+      .then((response) => {
+        return response;
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  },
+  storeToken(userId, token) {
+    debugger;
+    instance.patch(`users?id=${userId}`, {token})
+    .catch(error=>{
+      console.error(error)
     })
   },
-  whoAmI() {
-    return 
-  }
-}
+  whoAmI(token) {
+    return instance.get(`tokens?token=${token}`).then((response) => {
+      return response;
+    });
+  },
+};

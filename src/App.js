@@ -5,6 +5,8 @@ import ArticlesContainer from "./Components/Articles/ArticlesContainer";
 import WritersContainer from "./Components/Writers/WritersContainer";
 import About from "./Components/About/About";
 import LoginContainer from "./Components/Login/LoginContainer";
+import Login from "./Components/Login/Login";
+import Register from "./Components/Login/Register";
 
 const App = (props) => {
   return (
@@ -20,6 +22,8 @@ const App = (props) => {
           <Route path="/about" element={<About />} />
 
           <Route path="/login" element={<LoginContainer />} />
+          <Route path="/login_form" element={<Login />} />
+          <Route path="/register_form" element={<Register />} />
         </Routes>
       </div>
     </div>

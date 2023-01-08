@@ -21,8 +21,20 @@ code {
   align-items: center;
 }
 
+
+/* login container/login and register forms */
+.login_container button{
+  background-color: red;
+  transition: 200ms;
+}
+.login_container .inactive_button{
+  background-color: rgb(236, 84, 84);
+  cursor: pointer;
+}
+.login_container .active_button:hover{
+}
 .login_wrapper {
-  margin-top:15%;
+  margin-top:10%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -44,3 +56,32 @@ code {
   transform: scale(1.1);
   cursor: pointer;
 }
+
+/**/
+
+
+/* ARTICLES */
+/* USER SECTION */
+.user_section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.user_section .user_avatar {
+  margin-top: 2rem;
+}
+.user_section .user_avatar img {
+  max-width:100px;
+  max-height:100px;
+  
+}
+/**/
+
+/* articles section*/
+
+/**/
+
+
+
+/**/

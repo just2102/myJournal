@@ -9,8 +9,8 @@ const Header = (props) => {
                 Logo
             </div>
             <div className="articles_link">
-                {props.currentWriter.id
-                ?<NavLink to={`/articles/${props.currentWriter.id}`}>My Articles</NavLink>
+                {props.currentUser.id
+                ?<NavLink to={`/articles/${props.currentUser.id}`}>My Articles</NavLink>
                 :<NavLink to="/articles/1">Articles</NavLink>}
                 </div>
             <div className="writers_link">
@@ -22,7 +22,7 @@ const Header = (props) => {
             <div className="login_link">
                 {!props.isAuthorized
                 ?<NavLink to="/login">Login</NavLink>
-                :<span>Hi,{props.currentWriter.username}</span> }
+                :<span>Hi,{props.currentUser.username}</span> }
 
             </div>
         </header>

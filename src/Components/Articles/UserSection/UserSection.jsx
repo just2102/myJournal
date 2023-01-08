@@ -21,7 +21,7 @@ const UserSection = (props) => {
                 <img src={props.writer.avatar} alt="" />
               </div>
               <div className="user_username">{props.writer.name}</div>
-              {props.writer.id === props.currentWriter.id && (
+              {props.writer.id === props.currentUser.id && (
                 <div className="post_article_section">
                   <label htmlFor="newArticle_header">Your new article is called</label>
                   <input

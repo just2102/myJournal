@@ -1,10 +1,17 @@
 import Header from "./Header";
 import { connect } from "react-redux";
+import { useEffect } from "react";
 
 
 const HeaderAPIComponent = (props) => {
+    useEffect(()=>{
+        // if (!props.isAuthorized) {
+        //  props.checkAuthorizedCookies()
+        //  }
+    })
+
     return ( 
-        <Header isAuthorized={props.isAuthorized} currentWriter={props.currentWriter}></Header>
+        <Header isAuthorized={props.isAuthorized} currentUser={props.currentUser}></Header>
      );
 }
  
@@ -13,7 +20,7 @@ function mapStateToProps (state) {
     return {
         isAuthorized: state.auth.isAuthorized,
 
-        currentWriter: state.auth.currentWriter
+        currentUser: state.auth.currentUser
     }
 }
 

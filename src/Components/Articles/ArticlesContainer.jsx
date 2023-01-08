@@ -4,6 +4,7 @@ import Preloader from "../Common/Preloader";
 import Articles from "./Articles";
 import { getWriterArticles, getWriter } from "../../Redux/articlesReducer";
 import { Navigate, useParams } from "react-router-dom";
+import withAuthRedirect from "../hoc/withAuthRedirect";
 
 const ArticlesAPIComponent = (props) => {
   const params = useParams();
@@ -20,7 +21,7 @@ const ArticlesAPIComponent = (props) => {
         <Preloader />
       ) : (
         <Articles
-          currentWriter={props.currentWriter}
+          currentUser={props.currentUser}
           isAuthorized={props.isAuthorized}
           articles={props.articles}
         ></Articles>
@@ -29,12 +30,14 @@ const ArticlesAPIComponent = (props) => {
   );
 };
 
+const AuthRedirectComponent = withAuthRedirect(ArticlesAPIComponent)
+
 function mapStateToProps(state) {
   return {
     articles: state.articlesPage.articles,
     isFetching: state.articlesPage.isFetching,
 
-    currentWriter: state.auth.currentWriter,
+    currentUser: state.auth.currentUser,
     isAuthorized: state.auth.isAuthorized,
   };
 }
@@ -42,6 +45,6 @@ function mapStateToProps(state) {
 const ArticlesContainer = connect(mapStateToProps, {
   getWriter,
   getWriterArticles,
-})(ArticlesAPIComponent);
+})(AuthRedirectComponent);
 
 export default ArticlesContainer;

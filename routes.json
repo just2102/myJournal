@@ -1,0 +1,113 @@
+{
+  "/users": {
+    "auth": true,
+    "GET": {
+      "code": 200,
+      "data": [
+        {
+          "username": "just2102",
+          "email": "just2102@myjournal.com",
+          "password": "bestPassw0rd",
+          "followed": true,
+          "id": 1
+        },
+        {
+          "username": "writer2",
+          "email": "KendoLover1998@myjournal.com",
+          "password": "seomPassWordWriter2",
+          "followed": false,
+          "id": 2
+        },
+        {
+          "username": "KendoLover1998",
+          "email": "KendoLover1998@myjournal.com",
+          "password": "seomPassWorsd3",
+          "followed": true,
+          "id": 3
+        },
+        {
+          "username": "KyudoEnjoyer2007",
+          "email": "KyudoEnjoyer2007@myjournal.com",
+          "password": "sePasdWriterasd4",
+          "followed": true,
+          "id": 4
+        },
+        {
+          "email": "test@myjournal.com",
+          "password": "$2a$10$YPB0Ml9OG6IJSJBIJblb7e50zUDbmFexzcL7sEf43BgXwadoJzJ1e",
+          "username": "test",
+          "followed": false,
+          "id": 5
+        }
+      ]
+    }
+  },
+  "/writers": {
+    "GET": {
+      "code": 200,
+      "data": [
+        {
+          "name": "Eli K.",
+          "followed": true,
+          "id": 1,
+          "avatar": "https://sun9-13.userapi.com/impg/CX8p76Rc7rjdg44HiWTcF5zZJP5u5wkDjdLLvg/rHOR50fJyUI.jpg?size=256x256&quality=96&sign=33770d1e7fcdc2899dbc4afadac06eaa&type=album"
+        },
+        {
+          "name": "John F.",
+          "followed": false,
+          "id": 2,
+          "avatar": "https://sun9-13.userapi.com/impg/CX8p76Rc7rjdg44HiWTcF5zZJP5u5wkDjdLLvg/rHOR50fJyUI.jpg?size=256x256&quality=96&sign=33770d1e7fcdc2899dbc4afadac06eaa&type=album"
+        },
+        {
+          "name": "Alex J.",
+          "followed": true,
+          "id": 3,
+          "avatar": "https://sun9-13.userapi.com/impg/CX8p76Rc7rjdg44HiWTcF5zZJP5u5wkDjdLLvg/rHOR50fJyUI.jpg?size=256x256&quality=96&sign=33770d1e7fcdc2899dbc4afadac06eaa&type=album"
+        },
+        {
+          "name": "Michael S.",
+          "followed": true,
+          "id": 4,
+          "avatar": "https://sun9-13.userapi.com/impg/CX8p76Rc7rjdg44HiWTcF5zZJP5u5wkDjdLLvg/rHOR50fJyUI.jpg?size=256x256&quality=96&sign=33770d1e7fcdc2899dbc4afadac06eaa&type=album"
+        },
+        {
+          "name": "Test",
+          "followed": false,
+          "id": 5,
+          "avatar": "https://icon-library.com/images/robot-flat-icon/robot-flat-icon-29.jpg"
+        }
+      ]
+    }
+  },
+  "/articles": {
+    "GET": {
+      "code": 200,
+      "data": [
+        {
+          "id": 1,
+          "header": "First article... written by just2102",
+          "body": "Some text in the body of this article...",
+          "date": "Today",
+          "likeCount": 0,
+          "authorId": 1
+        },
+        {
+          "id": 2,
+          "header": "Second article! written by some writer 2",
+          "body": "Some random text idk?",
+          "date": "Today",
+          "likeCount": 0,
+          "authorId": 2
+        },
+        {
+          "id": 3,
+          "header": "Third article... written by just2102",
+          "body": "asd;'askd;laksjdk;l..",
+          "date": "Today",
+          "likeCount": 0,
+          "authorId": 1
+        }
+      ]
+    }
+  }
+}

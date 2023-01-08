@@ -10,7 +10,7 @@ function mapStateToProps (state) {
         newArticleBody: state.articlesPage.newArticleBody,
 
         isAuthorized: state.auth.isAuthorized,
-        currentWriter: state.auth.currentWriter
+        currentUser: state.auth.currentUser
     }
 }
 function mapDispatchToProps (dispatch) {
