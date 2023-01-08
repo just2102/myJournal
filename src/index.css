@@ -26,6 +26,8 @@ code {
 .login_container button{
   background-color: red;
   transition: 200ms;
+  border-radius: 10px;
+  padding:5px;
 }
 .login_container .inactive_button{
   background-color: rgb(236, 84, 84);

@@ -67,13 +67,6 @@ export const authAPI = {
         console.error(error);
       });
   },
-  storeToken(userId, token) {
-    debugger;
-    instance.patch(`users?id=${userId}`, {token})
-    .catch(error=>{
-      console.error(error)
-    })
-  },
   whoAmI(token) {
     return instance.get(`tokens?token=${token}`).then((response) => {
       return response;

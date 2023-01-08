@@ -10,6 +10,7 @@ import Login from "./Login";
 import Register from "./Register";
 import { useState } from "react";
 import { Navigate } from "react-router-dom";
+import { compose } from "redux";
 
 const LoginAPIComponent = (props) => {
   function onRegistrationFormSubmit(username, email, password) {
@@ -47,7 +48,6 @@ const LoginAPIComponent = (props) => {
     <div className="login_container">
       <button onClick={handleRegisterClick} className={activeButton==="register" ? 'active_button' : "inactive_button"}>Register</button>
       <button onClick={handleLoginClick}className={activeButton==="login" ? 'active_button' : "inactive_button"}>Login</button>
-
       {showRegister && (
         <Register
           isAuthorized={props.isAuthorized}
@@ -88,13 +88,7 @@ function mapStateToProps(state) {
   };
 }
 
-const LoginContainer = connect(mapStateToProps, {
-  updateUsernameInput,
-  updateEmailInput,
-  updatePasswordInput,
 
-  requestRegister,
-  requestAuth
-})(LoginAPIComponent);
-
-export default LoginContainer;
+export default compose(
+  connect(mapStateToProps,{updateUsernameInput,updateEmailInput,updatePasswordInput,requestRegister,requestAuth})
+)(LoginAPIComponent);

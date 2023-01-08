@@ -5,9 +5,11 @@ import Articles from "./Articles";
 import { getWriterArticles, getWriter } from "../../Redux/articlesReducer";
 import { Navigate, useParams } from "react-router-dom";
 import withAuthRedirect from "../hoc/withAuthRedirect";
+import { compose } from "redux";
 
 const ArticlesAPIComponent = (props) => {
   const params = useParams();
+
   useEffect(() => {
     props.getWriter(params.writerId);
     props.getWriterArticles(params.writerId);
@@ -30,8 +32,6 @@ const ArticlesAPIComponent = (props) => {
   );
 };
 
-const AuthRedirectComponent = withAuthRedirect(ArticlesAPIComponent)
-
 function mapStateToProps(state) {
   return {
     articles: state.articlesPage.articles,
@@ -42,9 +42,7 @@ function mapStateToProps(state) {
   };
 }
 
-const ArticlesContainer = connect(mapStateToProps, {
-  getWriter,
-  getWriterArticles,
-})(AuthRedirectComponent);
-
-export default ArticlesContainer;
+export default compose(
+  withAuthRedirect,
+  connect(mapStateToProps,{getWriter,getWriterArticles})
+)(ArticlesAPIComponent);

@@ -1,10 +1,10 @@
 import { Navigate } from "react-router-dom";
-
-
+import { useSelector } from "react-redux";
 
 const withAuthRedirect = (Component) => {
     const RedirectComponent = (props) => {
-        if (!props.isAuthorized) {
+        const isAuthorized = useSelector(state=> state.auth.isAuthorized)
+        if (!isAuthorized) {
             return <Navigate to="/login"/>
         } else {
             return <Component {...props} />;
@@ -12,5 +12,6 @@ const withAuthRedirect = (Component) => {
     }
     return RedirectComponent
 }
+
 
 export default withAuthRedirect
