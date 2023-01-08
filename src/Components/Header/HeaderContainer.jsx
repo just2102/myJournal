@@ -2,20 +2,23 @@ import Header from "./Header";
 import { connect } from "react-redux";
 
 
-const HeaderAPIComponent = () => {
+const HeaderAPIComponent = (props) => {
     return ( 
-        <Header ></Header>
+        <Header isAuthorized={props.isAuthorized} currentWriter={props.currentWriter}></Header>
      );
 }
  
-export default HeaderAPIComponent;
 
 function mapStateToProps (state) {
     return {
-        isAuthorized: state.auth.isAuthorized
+        isAuthorized: state.auth.isAuthorized,
+
+        currentWriter: state.auth.currentWriter
     }
 }
 
 const HeaderContainer = connect(mapStateToProps, {
 
 }) (HeaderAPIComponent) 
+
+export default HeaderContainer

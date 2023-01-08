@@ -1,4 +1,9 @@
+import { Navigate } from "react-router-dom";
+
 const Login = (props) => {
+  if (props.isAuthorized) {
+    return <Navigate to={`/articles/${props.currentWriter.id}`} />
+  }
   return (
     <div className="login_wrapper">
       <form>
@@ -21,6 +26,7 @@ const Login = (props) => {
           }}
         />
         <button type="button" onClick={()=> {props.onFormSubmit(props.usernameInput,props.passwordInput)}}>Login</button>
+        <span>Test credentials: just2102 ; bestPassw0rd</span>
       </form>
     </div>
   );

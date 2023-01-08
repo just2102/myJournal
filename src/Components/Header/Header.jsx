@@ -2,14 +2,16 @@ import { NavLink } from "react-router-dom";
 import styles from "./Header.css"
 
 const Header = (props) => {
-
-    return ( 
+    return (
+        <>
         <header>
             <div className="logo">
                 Logo
             </div>
             <div className="articles_link">
-                <NavLink to="/articles">Articles</NavLink>
+                {props.currentWriter.id
+                ?<NavLink to={`/articles/${props.currentWriter.id}`}>My Articles</NavLink>
+                :<NavLink to="/articles/1">Articles</NavLink>}
                 </div>
             <div className="writers_link">
                 <NavLink to="/writers">Writers</NavLink>
@@ -18,10 +20,15 @@ const Header = (props) => {
                 <NavLink to="/about">About</NavLink>
                 </div>
             <div className="login_link">
-                <NavLink to="/login">Login</NavLink>
+                {!props.isAuthorized
+                ?<NavLink to="/login">Login</NavLink>
+                :<span>Hi,{props.currentWriter.username}</span> }
+
             </div>
         </header>
+        </> 
      );
 }
+
  
 export default Header;

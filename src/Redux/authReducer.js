@@ -8,8 +8,7 @@ const AUTH_SUCCESS = "AUTH_SUCCESS"
 
 let initialState = {
     currentWriter: {},
-    //{id:1,username:'just2102',avatar: just2102_avatar},
-    isAuthorized: true,
+    isAuthorized: false,
     isFetching: false,
     usernameInput: '',
     passwordInput: '',
@@ -27,7 +26,8 @@ export function requestAuth (username, password) {
         dispatch(toggleAuthInProgress(true));
 
         authAPI.login(username, password).then(response=>{
-            if (response!==404) {
+            if (response!==undefined) {
+                debugger
                 dispatch(authSuccess(response))
             } dispatch(toggleAuthInProgress(false))
         })
@@ -47,7 +47,6 @@ function authReducer (state = initialState, action) {
                 passwordInput: action.input
             }
         case AUTH_SUCCESS:
-            debugger
             return {
                 ...state,
                 currentWriter: action.writer,

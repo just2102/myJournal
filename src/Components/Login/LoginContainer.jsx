@@ -18,6 +18,9 @@ const LoginAPIComponent = (props) => {
   }
   return (
     <Login
+      isAuthorized={props.isAuthorized}
+      currentWriter={props.currentWriter}
+
       usernameInput={props.usernameInput}
       passwordInput={props.passwordInput}
       onUsernameInputUpdate={onUsernameInputUpdate}
@@ -31,6 +34,8 @@ function mapStateToProps(state) {
   return {
     usernameInput: state.auth.usernameInput,
     passwordInput: state.auth.passwordInput,
+    isAuthorized: state.auth.isAuthorized,
+    currentWriter: state.auth.currentWriter
   };
 }
 
