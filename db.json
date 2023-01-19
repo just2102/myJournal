@@ -55,6 +55,14 @@
       "date": "Today",
       "likeCount": 0,
       "authorId": 1
+    },
+    {
+      "id": 4,
+      "header": "header",
+      "body": "test body",
+      "date": "19.01.2023",
+      "likeCount": 0,
+      "authorId": 5
     }
   ],
   "users": [

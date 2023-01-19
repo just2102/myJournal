@@ -34,6 +34,15 @@ export const articlesAPI = {
   getWriterArticles(authorId) {
     return instance.get(`articles?authorId=${authorId}`);
   },
+  getAllArticles() {
+    return instance.get(`articles`)
+  },
+  postArticle(article) {
+    return instance.post(`articles`, article)
+  },
+  deleteArticle(id) {
+    return instance.delete(`articles/${id}`)
+  }
 };
 
 export const authAPI = {

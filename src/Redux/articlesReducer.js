@@ -1,105 +1,128 @@
-import just2102_avatar from "../img/just2102_avatar.png"
-import { articlesAPI } from "../api/api"
+import just2102_avatar from "../img/just2102_avatar.png";
+import { articlesAPI } from "../api/api";
 
-const ADD_ARTICLE = "ADD_ARTICLE"
-const UPDATE_NEW_ARTICLE_HEADER = "UPDATE_NEW_ARTICLE_HEADER"
-const UPDATE_NEW_ARTICLE_BODY = "UPDATE_NEW-ARTICLE_BODY"
+const DELETE_ARTICLE_SUCCESS = "DELETE_ARTICLE_SUCCESS"
+const POST_ARTICLE_SUCCESS = "POST_ARTICLE_SUCCESS";
 
-const SET_WRITER = "SET_WRITER"
-const SET_WRITER_ARTICLES   =  "SET_WRITER_ARTICLES"
-const GET_WRITER_ARTICLES = "GET_WRITER_ARTICLES"
-const TOGGLE_IS_FETCHING = "TOGGLE_IS_FETCHING"
+const SET_WRITER = "SET_WRITER";
+const SET_ALL_ARTICLES = "SET_ALL_ARTICLES"
+const SET_WRITER_ARTICLES = "SET_WRITER_ARTICLES";
+const TOGGLE_IS_FETCHING = "TOGGLE_IS_FETCHING";
 
 
-export const addArticleActionCreator = () => ({type:ADD_ARTICLE})
-export const updateNewArticleBodyActionCreator = (newBody) => 
-({type: UPDATE_NEW_ARTICLE_BODY, newBody: newBody})
-export const updateNewArticleHeaderActionCreator = (newHeader) =>
-({type: UPDATE_NEW_ARTICLE_HEADER, newHeader: newHeader})
 
-const setWriter = (writer) => ({type: SET_WRITER, writer})
-const setWriterArticles = (articles) => ({type:SET_WRITER_ARTICLES, articles})
-const toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching})
 
-export function getWriter (writerId) {
-    return function (dispatch) {
-        articlesAPI.getWriter(writerId).then(response=>{
-            if (response.status === 200) {
-                dispatch(setWriter(response.data))
+const setWriter = (writer) => ({ type: SET_WRITER, writer });
+const setWriterArticles = (articles) => ({
+  type: SET_WRITER_ARTICLES,
+  articles,
+});
+const toggleIsFetching = (isFetching) => ({
+  type: TOGGLE_IS_FETCHING,
+  isFetching,
+});
+
+export function getWriter(writerId) {
+  return function (dispatch) {
+    articlesAPI.getWriter(writerId).then((response) => {
+      if (response.status === 200) {
+        dispatch(setWriter(response.data));
+      }
+    });
+  };
+}
+export function getWriterArticles(writerId) {
+  return function (dispatch) {
+    dispatch(toggleIsFetching(true));
+
+    articlesAPI.getWriterArticles(writerId).then((response) => {
+      if (response.status === 200) {
+        dispatch(setWriterArticles(response.data));
+      }
+      dispatch(toggleIsFetching(false));
+    });
+  };
+}
+const setAllArticles = (allArticles) => {return {type: SET_ALL_ARTICLES, allArticles}} 
+export const getAllArticles = () => {
+    return (dispatch) => {
+        articlesAPI.getAllArticles().then(response=>{
+            if (response.status===200) {
+                dispatch(setAllArticles(response.data)) 
             }
         })
     }
 }
-export function getWriterArticles (writerId) {
-    return function (dispatch) {
-        dispatch(toggleIsFetching(true))
 
-        articlesAPI.getWriterArticles(writerId).then(response=>{
+const postArticleSuccess = (article) => ({ type: POST_ARTICLE_SUCCESS, article });
+export const postArticleRequest = (newArticle) => {
+    return (dispatch) => {
+        articlesAPI.postArticle(newArticle).then(response=>{
+            if (response.status===201) {
+                dispatch(postArticleSuccess(response.data))  
+            }
+        })
+    }
+}
+
+ const deleteArticleSuccess = (id) => ({type: DELETE_ARTICLE_SUCCESS, id})
+export const deleteArticleRequest = (id) => {
+    return (dispatch) => {
+        articlesAPI.deleteArticle(id).then(response=>{
             if (response.status===200) {
-                dispatch(setWriterArticles(response.data))
-            } dispatch(toggleIsFetching(false))
+                 dispatch(deleteArticleSuccess(id))
+            }
         })
     }
 }
 
 let initialState = {
-    articles:[],
-    writer: null,
-    newArticleHeader: '',
-    newArticleBody:'',
-    isFetching: false
-}
+  writerArticles: [],
+  allArticles: [],
+  writer: null,
+  isFetching: false,
+};
 
-function articlesReducer (state = initialState, action) {
-    let stateCopy = {...state}
-    switch (action.type) {
-        case ADD_ARTICLE:
-            if (state.newArticleText!=="" && state.newArticleHeader!=="") {
-                let newArticle = 
-                {
-                    id:state.articlesData[state.articlesData.length-1].id + 1,
-                    header:state.newArticleHeader,
-                    body:state.newArticleBody,
-                    date:'Today',
-                    likeCount: 0
-                }
-                stateCopy.articlesData = [...state.articlesData]
-                stateCopy.articlesData.push(newArticle)
-                stateCopy.newArticleBody=""
-                stateCopy.newArticleHeader=""
-            }
-            return stateCopy;
-        case UPDATE_NEW_ARTICLE_BODY:
-            stateCopy.newArticleBody=action.newBody
-            return stateCopy;
-        case UPDATE_NEW_ARTICLE_HEADER:
-            stateCopy.newArticleHeader=action.newHeader
-            return stateCopy;
-        case SET_WRITER:
-            return {
-                ...state,
-                writer: action.writer
-            }
-        case GET_WRITER_ARTICLES:
-            return {
-                ...state,
-                articlesData: action.articles
-            }
-        case SET_WRITER_ARTICLES:
-            return {
-                ...state,
-                articles: [...action.articles]
-            }
-        case TOGGLE_IS_FETCHING:
-            return {
-                ...state,
-                isFetching: action.isFetching
-            }
-        default:
-            return state;
+function articlesReducer(state = initialState, action) {
+  switch (action.type) {
+    case POST_ARTICLE_SUCCESS:
+        return {
+            ...state,
+            writerArticles: [...state.writerArticles, action.article],
+            allArticles: [...state.allArticles, action.article]
+        }
+    case DELETE_ARTICLE_SUCCESS:
+        let newWriterArticles = [...state.writerArticles].filter(article=>article.id!==action.id)
+        let newAllArticles = [...state.allArticles].filter(article=> article.id!==action.id)
+        return {
+            ...state,
+            writerArticles: newWriterArticles,
+            allArticles: newAllArticles
+        }
+    case SET_WRITER:
+      return {
+        ...state,
+        writer: action.writer,
+      };
+    case SET_WRITER_ARTICLES:
+      return {
+        ...state,
+        writerArticles: [...action.articles],
+      };
+    case SET_ALL_ARTICLES: {
+        return {
+            ...state,
+            allArticles: action.allArticles
+        }
     }
+    case TOGGLE_IS_FETCHING:
+      return {
+        ...state,
+        isFetching: action.isFetching,
+      };
+    default:
+      return state;
+  }
 }
 
-
-
-export default articlesReducer
+export default articlesReducer;

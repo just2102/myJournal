@@ -13,6 +13,17 @@
     gap:1rem;
     color:black;
 }
+.article_remove {
+    margin-left: auto;
+}
+.article_remove img {
+    width:1.5rem;
+    transition: 200ms;
+}
+.article_remove img:hover {
+    cursor: pointer;
+    transform: scale(0.9);
+}
 
 .article_header {
     padding:5px;

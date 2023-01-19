@@ -1,47 +1,42 @@
+import { useForm } from "react-hook-form"
 import { useParams } from "react-router-dom"
+import { useState } from "react";
 
-const UserSection = (props) => {
+const UserSection = ({writer, isAuthorized, currentUser, onPostArticleRequest}) => {
+  const {register, handleSubmit} = useForm();
+  const onSubmit = data => {
+    // if new article has both header and body, form a new object in ArticlesContainer and post it 
+    // (articles container has access to all articles)
+    if (data.newArticleHeader!=="" && data.newArticleBody!=="") {
+      onPostArticleRequest(data)
+    }
+  }
     let params = useParams()
-    function addArticle() {
-        props.addArticle()
-    }
-    function onBodyChange(e) {
-        let newBody = e.target.value
-        props.onNewArticleBodyChange(newBody)
-    }
-    function onHeaderChange(e) {
-        let newHeader = e.target.value;
-        props.onNewArticleHeaderChange(newHeader)
-    }
     return (
         <>
-          {props.writer && (
+          {writer && (
             <div className="user_section">
               <div className="user_avatar">
-                <img src={props.writer.avatar} alt="" />
+                <img src={writer.avatar} alt="" />
               </div>
-              <div className="user_username">{props.writer.name}</div>
-              {props.writer.id === props.currentUser.id && (
+              <div className="user_username">{writer.name}</div>
+              {writer.id === currentUser.id && (
                 <div className="post_article_section">
+                  <form onSubmit={handleSubmit(onSubmit)}>
                   <label htmlFor="newArticle_header">Your new article is called</label>
                   <input
+                    {...register('newArticleHeader')}
                     type="text"
                     id="newArticle_header"
                     placeholder="..."
-                    value={props.newArticleHeader}
-                    onChange={onHeaderChange}
                   />
-      
                   <textarea
-                    name="newArticle"
+                    {...register('newArticleBody')}
                     id="newArticle_body"
-                    onChange={onBodyChange}
                     placeholder="In the beginning there was word..."
-                    value={props.newArticleBody}
                   ></textarea>
-                  <button className="post_article_button" onClick={addArticle}>
-                    Post
-                  </button>
+                  <input type='submit' value='Post' className="post_article_button" />
+                  </form>
                 </div>
               )}
             </div>
